@@ -74,8 +74,8 @@ translate_parameter_constraints <- function(par, swat_vers) {
     } else {
       # stop('Parameter constraints not yet implemented!')
       cons_var <- c('unit', 'lyr', 'year', 'day', 'hsg', 'plant', 'texture',
-                    'landuse', 'slope', # according to Nancy also 'region' >> check at later step, check also conditions for year and day with Nancy
-                    'name', 'plnt_typ', 'gro_trig') # Added 3 filter variables for the plants data base parameters
+              'landuse', 'landuse_comm', 'slope', # according to Nancy also 'region' >> check at later step, check also conditions for year and day with Nancy
+              'name', 'plnt_typ', 'gro_trig') # Added 3 filter variables for the plants data base parameters
       # cons_var <- c("hru", "sol", "bsn", "swq", "rte", "res", "aqu", "hlt", "pst")
     }
     if(any(!(names(constraints) %in% cons_var))) {
