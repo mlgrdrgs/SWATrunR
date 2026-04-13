@@ -257,7 +257,7 @@ setup_calibration_cal <- function(par_def, unit_cons) {
     }
   }
 
-  if(any(c('hsg', 'texture', 'plant', 'landuse', 'slope') %in% names(par_def))) {
+   if(any(c('hsg', 'texture', 'plant', 'landuse', 'landuse_comm', 'slope') %in% names(par_def))) {
     par_cal$CONDS <- as.character(nrow(cond_tbl))
     par_cal <- bind_rows(par_cal, cond_tbl)
   }
