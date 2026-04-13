@@ -401,7 +401,13 @@ add_soil_luse <- function(cond, var, cond_all) {
     eval(.)
 
   cond <- cond_all[[var]][eval_cond]
-  tbl <- tibble(NAME = var,
+
+  cal_name <- dplyr::case_when(
+    var == 'landuse_comm' ~ 'landuse',
+    TRUE ~ var
+  )
+
+  tbl <- tibble(NAME = cal_name,
                 CHG_TYPE = '=',
                 VAL = 0,
                 CONDS = cond)
