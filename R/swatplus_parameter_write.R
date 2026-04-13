@@ -206,11 +206,13 @@ read_unit_conditions <- function(project_path, parameter) {
   }
   #swq Not yet considered,
   # Remaining two object types hlt and pst also not yet implemented.
-  conds <- list(hsg = LETTERS[1:4],
-                texture = get_sol_texture(project_path%//%'soils.sol'),
-                plant   = get_tbl_column(project_path%//%'plants.plt', 'name') %>% unique(),
-                landuse = get_tbl_column(project_path%//%'landuse.lum', 'plnt_com') %>% unique()
-  )
+  conds <- list(
+  hsg          = LETTERS[1:4],
+  texture      = get_sol_texture(project_path%//%'soils.sol'),
+  plant        = get_tbl_column(project_path%//%'plants.plt', 'name') %>% unique(),
+  landuse      = get_tbl_column(project_path%//%'landuse.lum', 'plnt_com') %>% unique(),
+  landuse_comm = get_tbl_column(project_path%//%'landuse.lum', 'plnt_com') %>% unique()
+)
   return(list(units = units, conds = conds))
 }
 
