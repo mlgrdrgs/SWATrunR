@@ -241,14 +241,14 @@ setup_calibration_cal <- function(par_def, unit_cons) {
     }
   }
 
-  if(any(c('hsg', 'texture', 'plant', 'landuse') %in% names(par_def))) {
-      soil_luse <- select(par_def, any_of(c('hsg', 'texture', 'plant', 'landuse'))) %>%
-        select(., !tidyselect:::where(is.na)) %>% # will be replaced when where is in the tidyselect namespace
-        map(., ~ .x)
-      cond_tbl <- map2_df(soil_luse, names(soil_luse), ~ add_soil_luse(.x, .y, unit_cons$conds))
-  } else {
-    cond_tbl <- tibble()
-  }
+  if(any(c('hsg', 'texture', 'plant', 'landuse', 'landuse_comm') %in% names(par_def))) {
+    soil_luse <- select(par_def, any_of(c('hsg', 'texture', 'plant', 'landuse', 'landuse_comm'))) %>%
+      select(., !tidyselect:::where(is.na)) %>% # will be replaced when where is in the tidyselect namespace
+      map(., ~ .x)
+    cond_tbl <- map2_df(soil_luse, names(soil_luse), ~ add_soil_luse(.x, .y, unit_cons$conds))
+} else {
+  cond_tbl <- tibble()
+}
 
   if(any('slope' %in% names(par_def))) {
     if(!is.na(par_def$slope)) {
